@@ -2,7 +2,7 @@
 <extension type="package" method="upgrade">
     <name>VM Smart Filters</name>
     <packagename>vm_smartfilters</packagename>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
     <creationDate>2026-09</creationDate>
     <author>Darko Fatur</author>
     <authorEmail>info@topoweryou.com</authorEmail>
@@ -13,8 +13,8 @@
     <scriptfile>script.php</scriptfile>
     <blockChildUninstall>true</blockChildUninstall>
     <files folder="packages">
-        <file type="module" id="mod_vm_smartfilters" client="site">mod_vm_smartfilters-1.1.4.zip</file>
-        <file type="plugin" id="vmpropertyfilters" group="system">plg_system_vmpropertyfilters-1.1.4.zip</file>
+        <file type="module" id="mod_vm_smartfilters" client="site">mod_vm_smartfilters-1.1.5.zip</file>
+        <file type="plugin" id="vmpropertyfilters" group="system">plg_system_vmpropertyfilters-1.1.5.zip</file>
     </files>
     <updateservers>
         <server type="extension" priority="1" name="VM Smart Filters Package Updates">https://shop.topoweryou.com/files/updatesxml/vm-smartfilters-package.xml</server>

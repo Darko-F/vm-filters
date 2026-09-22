@@ -5,6 +5,31 @@
         document.querySelectorAll('[data-vm-filters]').forEach((form) => {
             if (form.dataset.initialized) return;
             form.dataset.initialized = 'true';
+            form.querySelectorAll('.vm-filter-item').forEach((item) => {
+                const clear = item.querySelector('[data-clear-filter]');
+                const controls = Array.from(item.querySelectorAll('select, input[type="text"]'));
+                const refreshClear = () => {
+                    clear.hidden = !controls.some((control) => control.value !== '');
+                };
+                item.addEventListener('input', refreshClear);
+                item.addEventListener('change', refreshClear);
+                clear.addEventListener('click', () => {
+                    controls.forEach((control) => {
+                        control.value = '';
+                        control.classList.remove('border-primary');
+                    });
+                    const details = item.querySelector('.vm-filter-dropdown');
+                    if (details) {
+                        details.classList.remove('vm-filter-active');
+                        const value = details.querySelector('.vm-filter-value');
+                        if (value) value.remove();
+                    }
+                    refreshClear();
+                    // An explicit clear applies immediately, retaining all other form values.
+                    form.requestSubmit();
+                });
+                refreshClear();
+            });
             const panels = Array.from(form.querySelectorAll('.vm-filter-dropdown'));
             panels.forEach((details) => {
                 details.addEventListener('toggle', () => {
@@ -57,6 +82,9 @@
     window.addEventListener('pageshow', () => {
         document.querySelectorAll('[data-vm-filters]').forEach((form) => {
             form.removeAttribute('aria-busy');
+            form.querySelectorAll('.vm-filter-item').forEach((item) => {
+                item.dispatchEvent(new Event('input'));
+            });
             const status = form.querySelector('[role="status"]');
             if (status) status.hidden = true;
         });

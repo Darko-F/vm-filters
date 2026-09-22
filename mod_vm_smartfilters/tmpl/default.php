@@ -60,6 +60,7 @@ $horizontal = $params->get('orientation', 'vertical') === 'horizontal';
                             </div>
                         </details>
                         <?php endif; ?>
+                        <button type="button" class="btn btn-outline-secondary vm-filter-clear" data-clear-filter hidden aria-label="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_CLEAR_ONE', Text::_($filter['title']))) ?>" title="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_CLEAR_ONE', Text::_($filter['title']))) ?>"><span aria-hidden="true">×</span></button>
                     </div>
                 <?php endforeach; ?>
                 <?php foreach ($propertyFilters as $property) : ?>
@@ -86,6 +87,7 @@ $horizontal = $params->get('orientation', 'vertical') === 'horizontal';
                             </div>
                         </details>
                         <?php endif; ?>
+                        <button type="button" class="btn btn-outline-secondary vm-filter-clear" data-clear-filter hidden aria-label="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_CLEAR_ONE', Text::_('MOD_VM_SMARTFILTERS_' . strtoupper($property['property'])))) ?>" title="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_CLEAR_ONE', Text::_('MOD_VM_SMARTFILTERS_' . strtoupper($property['property'])))) ?>"><span aria-hidden="true">×</span></button>
                     </div>
                 <?php endforeach; ?>
             </div>

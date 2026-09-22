@@ -69,3 +69,13 @@
 @media (prefers-reduced-motion: reduce) {
     .vm-smartfilters * { transition: none !important; }
 }
+
+/* Individual clear actions sit outside summary, avoiding nested interactive controls. */
+.vm-smartfilters .vm-filter-item { position: relative; }
+.vm-smartfilters-horizontal .vm-filter-item { display: flex; align-items: flex-start; gap: .25rem; }
+.vm-smartfilters-horizontal .vm-filter-dropdown { flex: 1; min-width: 0; }
+.vm-smartfilters .vm-filter-clear { width: 2.75rem; height: 2.75rem; min-height: 2.75rem; flex: 0 0 2.75rem; padding: 0; margin-top: .0625rem; }
+.vm-smartfilters .vm-filter-clear span { font-size: 1.5rem; line-height: 1; font-weight: 400; }
+.vm-smartfilters-vertical .vm-filter-clear { position: absolute; inset-inline-end: 0; top: -.375rem; }
+.vm-smartfilters-vertical .vm-filter-item:has(.vm-filter-clear:not([hidden])) > .form-label,
+.vm-smartfilters-vertical .vm-filter-item:has(.vm-filter-clear:not([hidden])) legend { padding-inline-end: 3rem; min-height: 2rem; }

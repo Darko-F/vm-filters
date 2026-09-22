@@ -72,7 +72,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.4/script.php",
+                    "location": "/packages/mod_vm_smartfilters-1.1.5/script.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -80,7 +80,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.4/services/provider.php",
+                    "location": "/packages/mod_vm_smartfilters-1.1.5/services/provider.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -88,7 +88,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.4/src/Dispatcher/Dispatcher.php",
+                    "location": "/packages/mod_vm_smartfilters-1.1.5/src/Dispatcher/Dispatcher.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -96,7 +96,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.4/src/Helper/FiltersHelper.php",
+                    "location": "/packages/mod_vm_smartfilters-1.1.5/src/Helper/FiltersHelper.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -104,7 +104,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.4/src/Helper/PropertyFilters.php",
+                    "location": "/packages/mod_vm_smartfilters-1.1.5/src/Helper/PropertyFilters.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -112,7 +112,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.4/tmpl/default.php",
+                    "location": "/packages/mod_vm_smartfilters-1.1.5/tmpl/default.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -120,7 +120,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/plg_system_vmpropertyfilters-1.1.4/services/provider.php",
+                    "location": "/packages/plg_system_vmpropertyfilters-1.1.5/services/provider.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -128,7 +128,7 @@
                 {
                     "type": "passed",
                     "subtype": "PH1",
-                    "location": "/packages/plg_system_vmpropertyfilters-1.1.4/src/Extension/VmPropertyFilters.php",
+                    "location": "/packages/plg_system_vmpropertyfilters-1.1.5/src/Extension/VmPropertyFilters.php",
                     "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
                     "line": 5,
                     "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
@@ -230,23 +230,23 @@
                     "type": "info",
                     "subtype": "",
                     "location": "/pkg_vm_smartfilters.xml",
-                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.4<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
+                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.5<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
                     "line": null,
                     "code": null
                 },
                 {
                     "type": "info",
                     "subtype": "",
-                    "location": "/packages/mod_vm_smartfilters-1.1.4/mod_vm_smartfilters.xml",
-                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.4<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
+                    "location": "/packages/mod_vm_smartfilters-1.1.5/mod_vm_smartfilters.xml",
+                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.5<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
                     "line": null,
                     "code": null
                 },
                 {
                     "type": "info",
                     "subtype": "",
-                    "location": "/packages/plg_system_vmpropertyfilters-1.1.4/vmpropertyfilters.xml",
-                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: System - VM Property Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.4<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
+                    "location": "/packages/plg_system_vmpropertyfilters-1.1.5/vmpropertyfilters.xml",
+                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: System - VM Property Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.5<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
                     "line": null,
                     "code": null
                 }

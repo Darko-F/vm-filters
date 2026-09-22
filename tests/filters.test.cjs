@@ -45,7 +45,7 @@ test('filter panels close on Escape/outside click and reveal invalid inputs', ()
     };
     const form = {
         dataset: {}, listeners: {},
-        querySelectorAll() { return [details]; },
+        querySelectorAll(selector) { return selector === '.vm-filter-dropdown' ? [details] : []; },
         addEventListener(name, handler) { this.listeners[name] = handler; },
     };
     const document = {
@@ -66,4 +66,39 @@ test('filter panels close on Escape/outside click and reveal invalid inputs', ()
     assert.equal(details.open, true);
     listeners.click({ target: {} });
     assert.equal(details.open, false);
+});
+
+test('individual clear resets only its field, preserves units and submits in manual mode', () => {
+    const control = (value) => ({ value, classList: { remove() {} } });
+    const min = control('10');
+    const max = control('20');
+    const unit = control('MM');
+    const other = control('M8');
+    const clear = { hidden: true, addEventListener(name, fn) { this[name] = fn; } };
+    const item = {
+        listeners: {},
+        querySelector(selector) { return selector === '[data-clear-filter]' ? clear : null; },
+        querySelectorAll() { return [min, max]; },
+        addEventListener(name, fn) { this.listeners[name] = fn; },
+    };
+    const form = {
+        dataset: { autoSubmit: '0' }, submissions: 0,
+        querySelectorAll(selector) { return selector === '.vm-filter-item' ? [item] : []; },
+        addEventListener() {}, requestSubmit() { this.submissions++; },
+    };
+    vm.runInNewContext(readFileSync('mod_vm_smartfilters/media/js/filters.js', 'utf8'), {
+        document: { readyState: 'complete', querySelectorAll: () => [form] },
+        window: { addEventListener() {} },
+    });
+    assert.equal(clear.hidden, false);
+    clear.click();
+    assert.equal(min.value, '');
+    assert.equal(max.value, '');
+    assert.equal(unit.value, 'MM');
+    assert.equal(other.value, 'M8');
+    assert.equal(clear.hidden, true);
+    assert.equal(form.submissions, 1);
+    min.value = '0';
+    item.listeners.input();
+    assert.equal(clear.hidden, false, 'Zero is a value and can be cleared');
 });

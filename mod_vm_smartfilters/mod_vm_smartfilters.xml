@@ -6,7 +6,7 @@
     <authorUrl>https://topoweryou.com</authorUrl>
     <copyright>Copyright (C) 2026 topoweryou.com</copyright>
     <creationDate>2026-09</creationDate>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
     <description>MOD_VM_SMARTFILTERS_XML_DESCRIPTION</description>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <namespace path="src">VmFilters\Module\SmartFilters</namespace>
