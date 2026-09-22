@@ -180,6 +180,9 @@ namespace {
     check(!str_contains($horizontalHtml, 'MOD_VM_SMARTFILTERS_RANGE_HINT'), 'Remove range instruction');
     check(strpos($horizontalHtml, 'vm-smartfilters-toolbar') < strpos($horizontalHtml, '<form'), 'Clear all is above the filters');
     check(substr_count($horizontalHtml, 'vm-filter-panel-apply') === 4, 'Each range keeps an apply action');
+    check(!str_contains($horizontalHtml, 'MOD_VM_SMARTFILTERS_HINT_AUTO'), 'Automatic refresh instruction is removed');
+    check(str_contains($horizontalHtml, 'class="visually-hidden" id="vmfilters-26-heading"'), 'Icon heading retains an accessible name');
+    check(str_contains($horizontalHtml, 'class="btn vm-filter-clear-all"'), 'Clear all uses an icon action');
     check(str_contains($horizontalHtml, 'name="vmfp[23_product_weight][max]"'), 'Horizontal weight range preserves query contract');
     check(!str_contains(render($helper->getData($app, new Registry()), new Registry(), 27), '<details '), 'Vertical sidebar keeps visible fields');
     \Joomla\CMS\Plugin\PluginHelper::$enabled = false;

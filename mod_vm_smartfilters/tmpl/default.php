@@ -22,25 +22,29 @@ $horizontal = $params->get('orientation', 'vertical') === 'horizontal';
         <p class="text-muted small"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_EMPTY')) ?></p>
     <?php endif; ?>
 <?php else : ?>
-<section class="vm-smartfilters card<?= $horizontal ? ' vm-smartfilters-horizontal' : ' vm-smartfilters-vertical' ?>" aria-labelledby="<?= $instance ?>-heading">
+<section class="vm-smartfilters<?= $horizontal ? ' vm-smartfilters-horizontal' : ' vm-smartfilters-vertical' ?>" aria-labelledby="<?= $instance ?>-heading">
     <div class="card-body">
-        <div class="vm-smartfilters-heading d-flex align-items-center justify-content-between ">
-            <h2 class="h5 mb-0" id="<?= $instance ?>-heading"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_HEADING')) ?></h2>
-            <?php if ($activeCount > 0) : ?>
-                <span class="badge rounded-pill text-bg-primary" aria-label="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_ACTIVE', $activeCount)) ?>"><?= $activeCount ?></span>
-            <?php endif; ?>
+        <div class="vm-smartfilters-toolbar d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+                <h2 class="visually-hidden" id="<?= $instance ?>-heading"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_HEADING')) ?></h2>
+                <span class="vm-filter-icon" title="<?= $escape(Text::_('MOD_VM_SMARTFILTERS_HEADING')) ?>" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 4h18l-7 8v7l-4 2v-9z"/></svg>
+                </span>
+                <?php if ($activeCount > 0) : ?>
+                    <span class="badge rounded-pill text-bg-primary" aria-label="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_ACTIVE', $activeCount)) ?>"><?= $activeCount ?></span>
+                <?php endif; ?>
+            </div>
+            <a class="btn vm-filter-clear-all" href="<?= $escape($clearUrl) ?>" aria-label="<?= $escape(Text::_('MOD_VM_SMARTFILTERS_CLEAR')) ?>" title="<?= $escape(Text::_('MOD_VM_SMARTFILTERS_CLEAR')) ?>">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h14l-5 7v7l-4 2v-9zM16 15l5 5m0-5-5 5"/></svg>
+            </a>
         </div>
-        <div class="vm-smartfilters-toolbar d-flex justify-content-start">
-            <a class="btn btn-outline-secondary" href="<?= $escape($clearUrl) ?>"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_CLEAR')) ?></a>
-        </div>
-        <p class="vm-smartfilters-help text-muted small" id="<?= $instance ?>-help"><?= $escape(Text::_((int) $params->get('autosubmit', 1) ? 'MOD_VM_SMARTFILTERS_HINT_AUTO' : 'MOD_VM_SMARTFILTERS_HINT')) ?></p>
         <?php if ($otherCount > 0) : ?>
             <p class="small text-muted"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_OTHER_ACTIVE')) ?></p>
         <?php endif; ?>
         <?php if ($propertyInvalid) : ?>
             <p class="alert alert-warning" role="alert"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_INVALID_RANGE')) ?></p>
         <?php endif; ?>
-        <form action="<?= $escape($action) ?>" method="get" class="vm-smartfilters-form" data-vm-filters data-auto-submit="<?= (int) $params->get('autosubmit', 1) ?>" aria-describedby="<?= $instance ?>-help">
+        <form action="<?= $escape($action) ?>" method="get" class="vm-smartfilters-form" data-vm-filters data-auto-submit="<?= (int) $params->get('autosubmit', 1) ?>">
             <?php foreach ($hidden as $name => $value) : ?>
                 <input type="hidden" name="<?= $escape($name) ?>" value="<?= $escape($value) ?>">
             <?php endforeach; ?>

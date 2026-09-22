@@ -1,5 +1,15 @@
 # Version Summary
 
+## VM Smart Filters 1.1.7 — 22 September 2026
+
+- Removed the outer filter card border, rounded corners and shadow; retained a single bottom divider.
+- Replaced the visible **Filtriraj izdelke** heading with a filter icon, retaining a hidden heading for screen readers.
+- Moved **Clear filters** to an icon at the upper right, with a translated accessible label and tooltip.
+- Removed the automatic-refresh instruction. Individual clear icons and per-measurement apply buttons remain available.
+- Package, site module and companion system plugin: **1.1.7**.
+
+[Download version 1.1.7](dist/pkg_vm_smartfilters-1.1.7.zip?raw=true). Install over an existing 1.1.x package; settings are retained.
+
 ## VM Smart Filters 1.1.6 — 22 September 2026
 
 - Removed the main bottom **Prikaži izdelke / Show products** button and moved **Počisti filtre / Clear filters** to the upper left, above the filter controls.
