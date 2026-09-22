@@ -1,14 +1,14 @@
-# VM Smart Filters 1.1.3
+# VM Smart Filters 1.1.4
 
 Installable Joomla package (site module and companion system plugin) for VirtueMart **4.8.4 and later compatible releases**, using searchable String custom fields and numeric Property custom fields for length, width, height and weight. Designed for Joomla **4.4 / 5 / 6**, with PHP **8.1+** (also meet your installed Joomla/VirtueMart PHP requirements). Future releases need regression testing; compatibility with every future release cannot be guaranteed.
 
 ## Install and configure
 
-1. In Joomla administration, open **System → Install → Extensions → Upload Package File** and upload `pkg_vm_smartfilters-1.1.3.zip`. Install VirtueMart first.
+1. In Joomla administration, open **System → Install → Extensions → Upload Package File** and upload `pkg_vm_smartfilters-1.1.4.zip`. Install VirtueMart first.
 2. In **VirtueMart → Products → Custom Fields**, create or edit a **String (S)** field, such as Colour, Size, or Material. Set **Published = Yes**, **Searchable = Yes**, **Admin only = No**, and **Hidden = No**. Use a public field without custom-field shopper-group restrictions.
 3. Edit products and assign actual values on the **Custom Fields** tab, for example Colour = Blue and Size = Large. Defining a field alone does not create filter options.
 4. In **Content → Site Modules**, open **VM Smart Filters** (create a module of this type if necessary). Publish it in your template's sidebar or above-products position and assign it to the shop's **VirtueMart Category Layout** menu item(s). The module renders on `com_virtuemart` category views with a selected category. To also display filters on the shop homepage (category ID 0), enable **Show on shop homepage** / **Prikaži na začetni strani trgovine**. Use this when the homepage displays products from shop categories; its filter options come from the full catalog. The option does not enable filters on article or product detail pages. Homepage hiding takes priority over **Show message when no filters exist**.
-5. Leave **Custom field IDs** empty for automatic discovery, or enter IDs such as `7,12,18` to choose fields and their order. Select vertical or horizontal layout.
+5. Leave **Custom field IDs** empty for automatic discovery, or enter IDs such as `7,12,18` to choose fields and their order. Select **Horizontal** for a compact filter bar with expandable controls, or **Vertical** for visible fields in a sidebar. Horizontal controls expand inline on phones. Selected values are shown on each control after filtering; Escape closes the panel and returns focus to its heading. The controls also open without JavaScript.
 6. Open that category in the frontend and select a value. The page reloads with matching products using your existing VirtueMart product cards, prices, sorting and pagination. Selecting Colour and Size requires both to match. **Clear filters** clears custom-field selections while retaining the category, keyword and manufacturer context.
 
 The package installs the module and **System - VM Property Filters**, enabling that plugin on first installation. No core files or product values are changed. Uninstall the **VM Smart Filters package** through Joomla's extension manager. Install the complete package when upgrading from 1.0.x; existing module settings are retained. An intentionally disabled existing plugin stays disabled during upgrades.
@@ -42,7 +42,7 @@ The release maintainer must upload the generated feed and register/upload the ZI
 ## Behaviour and scope
 
 - One value per String field and one inclusive range per numeric Property field, combined with AND across all fields. This is not a checkbox multi-select/OR or AJAX extension.
-- Bootstrap 5 classes, responsive layout, labelled native selects, visible keyboard focus and a manual submit button. The submit button works with JavaScript disabled. Native automatic selection refresh can be disabled in module settings.
+- Joomla-native Bootstrap 5 form/button classes with scoped styling (no extra Bootstrap copy), responsive layout, labelled native selects, visible keyboard focus and a manual submit button. The submit button works with JavaScript disabled. Native automatic selection refresh can be disabled in module settings.
 - Scoped CSS provides a baseline style even without Bootstrap. No CDN, jQuery, external font, or Bootstrap JavaScript is loaded. The template's Bootstrap colour variables are used when available.
 - English and Slovenian language files. Field titles and value language constants pass through Joomla translation.
 - Controls come from published products and published, public searchable String or supported Property fields. Product shopper-group restrictions are considered. Admin-only, hidden, and shopper-group-restricted field definitions are excluded.

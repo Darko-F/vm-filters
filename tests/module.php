@@ -172,6 +172,12 @@ namespace {
         check(!str_contains(render($selected, $selection, 25), 'name="vmfp[' . (20 + $offset) . '_product_' . $property . '][min]"'), 'Disabled measurement absent from form: ' . $property);
     }
     check($helper->getData($app, new Registry(['property_filters' => 0]))['propertyFilters'] === [], 'Master switch disables all measurements');
+    $horizontal = new Registry(['orientation' => 'horizontal']);
+    $horizontalHtml = render($helper->getData($app, $horizontal), $horizontal, 26);
+    check(substr_count($horizontalHtml, '<details ') === 4, 'Horizontal measurements use native expandable controls');
+    check(str_contains($horizontalHtml, 'vm-smartfilters-horizontal'), 'Horizontal styling is scoped');
+    check(str_contains($horizontalHtml, 'name="vmfp[23_product_weight][max]"'), 'Horizontal weight range preserves query contract');
+    check(!str_contains(render($helper->getData($app, new Registry()), new Registry(), 27), '<details '), 'Vertical sidebar keeps visible fields');
     \Joomla\CMS\Plugin\PluginHelper::$enabled = false;
     check($helper->getData($app, new Registry())['propertyFilters'] === [], 'Hide Property controls if companion plugin disabled');
     echo "$checks PHP contract checks passed\n";
