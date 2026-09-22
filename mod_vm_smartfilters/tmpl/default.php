@@ -55,7 +55,7 @@ $instance = 'vmfilters-' . (int) $module->id;
                 <?php foreach ($propertyFilters as $property) : ?>
                     <div class="<?= $params->get('orientation', 'vertical') === 'horizontal' ? 'col-12 col-md-6 col-xl-4' : 'col-12' ?>">
                         <fieldset class="vm-property-range">
-                            <legend class="form-label fw-semibold"><?= $escape(Text::_($property['title'])) ?> <span class="text-muted">(<?= $escape(strtolower($property['unit'])) ?>)</span></legend>
+                            <legend class="form-label fw-semibold"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_' . strtoupper($property['property']))) ?> <span class="text-muted">(<?= $escape(strtolower($property['unit'])) ?>)</span></legend>
                             <input type="hidden" name="vmfp[<?= $escape($property['key']) ?>][unit]" value="<?= $escape($property['unit']) ?>">
                             <div class="vm-property-bounds">
                                 <?php foreach (['min' => 'MOD_VM_SMARTFILTERS_MIN', 'max' => 'MOD_VM_SMARTFILTERS_MAX'] as $bound => $label) : ?>

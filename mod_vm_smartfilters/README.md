@@ -1,10 +1,10 @@
-# VM Smart Filters 1.1.0
+# VM Smart Filters 1.1.1
 
 Installable Joomla package (site module and companion system plugin) for VirtueMart **4.8.4 and later compatible releases**, using searchable String custom fields and numeric Property custom fields for length, width, height and weight. Designed for Joomla **4.4 / 5 / 6**, with PHP **8.1+** (also meet your installed Joomla/VirtueMart PHP requirements). Future releases need regression testing; compatibility with every future release cannot be guaranteed.
 
 ## Install and configure
 
-1. In Joomla administration, open **System → Install → Extensions → Upload Package File** and upload `pkg_vm_smartfilters-1.1.0.zip`. Install VirtueMart first.
+1. In Joomla administration, open **System → Install → Extensions → Upload Package File** and upload `pkg_vm_smartfilters-1.1.1.zip`. Install VirtueMart first.
 2. In **VirtueMart → Products → Custom Fields**, create or edit a **String (S)** field, such as Colour, Size, or Material. Set **Published = Yes**, **Searchable = Yes**, **Admin only = No**, and **Hidden = No**. Use a public field without custom-field shopper-group restrictions.
 3. Edit products and assign actual values on the **Custom Fields** tab, for example Colour = Blue and Size = Large. Defining a field alone does not create filter options.
 4. In **Content → Site Modules**, open **VM Smart Filters** (create a module of this type if necessary). Publish it in your template's sidebar or above-products position and assign it to the shop's **VirtueMart Category Layout** menu item(s). The module renders on `com_virtuemart` category views only.
@@ -18,7 +18,7 @@ The package installs the module and **System - VM Property Filters**, enabling t
 1. Fill in the product's **Product Dimensions and Weight** tab, including the dimension and weight units.
 2. Create a published **Property (P)** custom field (for example Width) with **Admin only = No**, **Hidden = No**, and no field-level shopper-group restriction. Add it to each relevant product and select `product_width`. The other supported properties are `product_length`, `product_height` and `product_weight`.
 3. Leave the module's **Enable dimension and weight Property filters** enabled. Leave **Custom field IDs** blank or include the Property field IDs in the list. The native **Searchable** flag is required for String fields only; Property filters use their own numeric query.
-4. Choose the module's **Dimension filter unit** (default cm) and **Weight filter unit** (default kg).
+4. Numeric filter headings use the actual property name (Length, Width, Height or Weight), translated into the site language, rather than the custom-field title. Choose the module's **Dimension filter unit** (default cm) and **Weight filter unit** (default kg).
 5. Enter a minimum, maximum, or both, then press **Show products**. Numeric inputs wait for submission so you can finish entering both bounds. String selects retain their optional automatic submission.
 
 Example: Width 60–80 cm matches products stored as 70 cm, 0.7 m or 700 mm. Add Weight maximum 10 kg to require both conditions. Boundaries are inclusive. Enter equal minimum and maximum values for an exact measurement. Decimal dots and commas are accepted, with up to eight decimal places.
