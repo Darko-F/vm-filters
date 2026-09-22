@@ -1,13 +1,13 @@
-# VM Smart Filters 1.1.2
+# VM Smart Filters 1.1.3
 
 Installable Joomla package (site module and companion system plugin) for VirtueMart **4.8.4 and later compatible releases**, using searchable String custom fields and numeric Property custom fields for length, width, height and weight. Designed for Joomla **4.4 / 5 / 6**, with PHP **8.1+** (also meet your installed Joomla/VirtueMart PHP requirements). Future releases need regression testing; compatibility with every future release cannot be guaranteed.
 
 ## Install and configure
 
-1. In Joomla administration, open **System → Install → Extensions → Upload Package File** and upload `pkg_vm_smartfilters-1.1.2.zip`. Install VirtueMart first.
+1. In Joomla administration, open **System → Install → Extensions → Upload Package File** and upload `pkg_vm_smartfilters-1.1.3.zip`. Install VirtueMart first.
 2. In **VirtueMart → Products → Custom Fields**, create or edit a **String (S)** field, such as Colour, Size, or Material. Set **Published = Yes**, **Searchable = Yes**, **Admin only = No**, and **Hidden = No**. Use a public field without custom-field shopper-group restrictions.
 3. Edit products and assign actual values on the **Custom Fields** tab, for example Colour = Blue and Size = Large. Defining a field alone does not create filter options.
-4. In **Content → Site Modules**, open **VM Smart Filters** (create a module of this type if necessary). Publish it in your template's sidebar or above-products position and assign it to the shop's **VirtueMart Category Layout** menu item(s). The module renders on `com_virtuemart` category views only.
+4. In **Content → Site Modules**, open **VM Smart Filters** (create a module of this type if necessary). Publish it in your template's sidebar or above-products position and assign it to the shop's **VirtueMart Category Layout** menu item(s). The module renders on `com_virtuemart` category views with a selected category. To also display filters on the shop homepage (category ID 0), enable **Show on shop homepage** / **Prikaži na začetni strani trgovine**. Use this when the homepage displays products from shop categories; its filter options come from the full catalog. The option does not enable filters on article or product detail pages. Homepage hiding takes priority over **Show message when no filters exist**.
 5. Leave **Custom field IDs** empty for automatic discovery, or enter IDs such as `7,12,18` to choose fields and their order. Select vertical or horizontal layout.
 6. Open that category in the frontend and select a value. The page reloads with matching products using your existing VirtueMart product cards, prices, sorting and pagination. Selecting Colour and Size requires both to match. **Clear filters** clears custom-field selections while retaining the category, keyword and manufacturer context.
 

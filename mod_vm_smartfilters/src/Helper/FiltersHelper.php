@@ -20,6 +20,16 @@ final class FiltersHelper
     {
     }
 
+    /** The VM category layout also serves the shop homepage (category ID zero). */
+    public static function isFilterPage(CMSApplicationInterface $app, Registry $params): bool
+    {
+        $input = $app->getInput();
+        return $input->getCmd('option') === 'com_virtuemart'
+            && $input->getCmd('view') === 'category'
+            && ($input->getInt('virtuemart_category_id', 0) > 0
+                || (bool) $params->get('show_shop_home', 0));
+    }
+
     /** Only positive integer IDs can enter SQL; keep administrator ordering. */
     public static function parseIds(string $input): array
     {

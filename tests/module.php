@@ -89,6 +89,20 @@ namespace {
     }
     $helper = new FiltersHelper($db);
     $app = new Application();
+    $app->input->values['option'] = 'com_virtuemart';
+    $app->input->values['view'] = 'category';
+    check(FiltersHelper::isFilterPage($app, new Registry()), 'Selected category allows filters');
+    $app->input->values['virtuemart_category_id'] = 0;
+    check(!FiltersHelper::isFilterPage($app, new Registry()), 'Shop homepage hidden by default');
+    check(!FiltersHelper::isFilterPage($app, new Registry(['show_empty' => 1])), 'Empty diagnostic cannot override homepage restriction');
+    check(FiltersHelper::isFilterPage($app, new Registry(['show_shop_home' => 1])), 'Shop homepage can explicitly enable filters');
+    $app->input->values['view'] = 'productdetails';
+    check(!FiltersHelper::isFilterPage($app, new Registry(['show_shop_home' => 1])), 'Homepage option does not enable product detail filters');
+    $app->input->values['option'] = 'com_content';
+    $app->input->values['view'] = 'category';
+    check(!FiltersHelper::isFilterPage($app, new Registry(['show_shop_home' => 1])), 'Homepage option excludes non-VM pages');
+    $app->input->values['option'] = 'com_virtuemart';
+    $app->input->values['virtuemart_category_id'] = 9;
     $params = new Registry(['field_ids' => '12,7']);
     $data = $helper->getData($app, $params);
     check(array_keys($data['filters']) === [12, 7], 'Configured field order');

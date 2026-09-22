@@ -22,19 +22,25 @@ final class Dispatcher extends AbstractModuleDispatcher
         $data = parent::getLayoutData();
         $data['filters'] = [];
         $data['error'] = '';
-        $data['visible'] = $this->input->getCmd('option') === 'com_virtuemart'
-            && $this->input->getCmd('view') === 'category';
+        $data['visible'] = FiltersHelper::isFilterPage($this->app, $data['params']);
 
         if (!$data['visible']) {
+            $this->module->showtitle = 0;
             return $data;
         }
 
         try {
             $helper = new FiltersHelper(Factory::getContainer()->get(DatabaseInterface::class));
             $data = array_merge($data, $helper->getData($this->app, $data['params']));
+            if (!$data['filters'] && !$data['propertyFilters'] && !$data['activeCount']
+                && !(int) $data['params']->get('show_empty', 0)) {
+                $data['visible'] = false;
+                $this->module->showtitle = 0;
+                return $data;
+            }
             $assets = $this->app->getDocument()->getWebAssetManager();
-            $assets->registerAndUseStyle('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.css', ['version' => '1.1.2']);
-            $assets->registerAndUseScript('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.js', ['version' => '1.1.2'], ['defer' => true]);
+            $assets->registerAndUseStyle('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.css', ['version' => '1.1.3']);
+            $assets->registerAndUseScript('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.js', ['version' => '1.1.3'], ['defer' => true]);
         } catch (\Throwable $exception) {
             Log::add('VM Smart Filters: ' . $exception->getMessage(), Log::ERROR, 'mod_vm_smartfilters');
             $data['error'] = Text::_('MOD_VM_SMARTFILTERS_UNAVAILABLE');
