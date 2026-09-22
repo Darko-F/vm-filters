@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>MOD_VM_SMARTFILTERS</name>
+    <author>Darko Fatur</author>
+    <authorEmail>info@topoweryou.com</authorEmail>
+    <authorUrl>https://topoweryou.com</authorUrl>
+    <copyright>Copyright (C) 2026 topoweryou.com</copyright>
+    <creationDate>2026-09</creationDate>
+    <version>1.0.1</version>
+    <description>MOD_VM_SMARTFILTERS_XML_DESCRIPTION</description>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <namespace path="src">VmFilters\Module\SmartFilters</namespace>
+    <scriptfile>script.php</scriptfile>
+    <files>
+        <folder module="mod_vm_smartfilters">services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <filename>script.php</filename>
+        <filename>README.md</filename>
+        <filename>LICENSE.txt</filename>
+    </files>
+    <media destination="mod_vm_smartfilters" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
+    <languages>
+        <language tag="en-GB">language/en-GB/mod_vm_smartfilters.ini</language>
+        <language tag="en-GB">language/en-GB/mod_vm_smartfilters.sys.ini</language>
+        <language tag="sl-SI">language/sl-SI/mod_vm_smartfilters.ini</language>
+        <language tag="sl-SI">language/sl-SI/mod_vm_smartfilters.sys.ini</language>
+    </languages>
+    <updateservers>
+        <server type="extension" priority="1" name="VM Smart Filters Updates">https://shop.topoweryou.com/files/updatesxml/vm-smartfilters.xml</server>
+    </updateservers>
+    <dlid prefix="key=" suffix="" />
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="field_ids" type="text" label="MOD_VM_SMARTFILTERS_FIELD_IDS" description="MOD_VM_SMARTFILTERS_FIELD_IDS_DESC" filter="string" />
+                <field name="category_options" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="MOD_VM_SMARTFILTERS_CATEGORY_OPTIONS" description="MOD_VM_SMARTFILTERS_CATEGORY_OPTIONS_DESC">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+                <field name="autosubmit" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="MOD_VM_SMARTFILTERS_AUTOSUBMIT">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+                <field name="orientation" type="list" default="vertical" label="MOD_VM_SMARTFILTERS_ORIENTATION">
+                    <option value="vertical">MOD_VM_SMARTFILTERS_VERTICAL</option><option value="horizontal">MOD_VM_SMARTFILTERS_HORIZONTAL</option>
+                </field>
+                <field name="show_empty" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="MOD_VM_SMARTFILTERS_SHOW_EMPTY">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" />
+                <field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" />
+                <field name="cache" type="hidden" default="0" filter="integer" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
