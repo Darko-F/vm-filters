@@ -33,8 +33,8 @@ final class Dispatcher extends AbstractModuleDispatcher
             $helper = new FiltersHelper(Factory::getContainer()->get(DatabaseInterface::class));
             $data = array_merge($data, $helper->getData($this->app, $data['params']));
             $assets = $this->app->getDocument()->getWebAssetManager();
-            $assets->registerAndUseStyle('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.css', ['version' => '1.0.1']);
-            $assets->registerAndUseScript('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.js', ['version' => '1.0.1'], ['defer' => true]);
+            $assets->registerAndUseStyle('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.css', ['version' => '1.1.0']);
+            $assets->registerAndUseScript('mod_vm_smartfilters', 'mod_vm_smartfilters/filters.js', ['version' => '1.1.0'], ['defer' => true]);
         } catch (\Throwable $exception) {
             Log::add('VM Smart Filters: ' . $exception->getMessage(), Log::ERROR, 'mod_vm_smartfilters');
             $data['error'] = Text::_('MOD_VM_SMARTFILTERS_UNAVAILABLE');

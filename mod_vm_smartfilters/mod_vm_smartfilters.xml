@@ -6,7 +6,7 @@
     <authorUrl>https://topoweryou.com</authorUrl>
     <copyright>Copyright (C) 2026 topoweryou.com</copyright>
     <creationDate>2026-09</creationDate>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <description>MOD_VM_SMARTFILTERS_XML_DESCRIPTION</description>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <namespace path="src">VmFilters\Module\SmartFilters</namespace>
@@ -30,13 +30,20 @@
         <language tag="sl-SI">language/sl-SI/mod_vm_smartfilters.ini</language>
         <language tag="sl-SI">language/sl-SI/mod_vm_smartfilters.sys.ini</language>
     </languages>
-    <updateservers>
-        <server type="extension" priority="1" name="VM Smart Filters Updates">https://shop.topoweryou.com/files/updatesxml/vm-smartfilters.xml</server>
-    </updateservers>
-    <dlid prefix="key=" suffix="" />
     <config>
         <fields name="params">
             <fieldset name="basic">
+                <field name="property_filters" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="MOD_VM_SMARTFILTERS_PROPERTIES">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+                <field name="dimension_unit" type="list" default="CM" label="MOD_VM_SMARTFILTERS_DIMENSION_UNIT">
+                    <option value="MM">mm</option><option value="CM">cm</option><option value="M">m</option>
+                    <option value="IN">in</option><option value="FT">ft</option><option value="YD">yd</option>
+                </field>
+                <field name="weight_unit" type="list" default="KG" label="MOD_VM_SMARTFILTERS_WEIGHT_UNIT">
+                    <option value="MG">mg</option><option value="G">g</option><option value="KG">kg</option>
+                    <option value="LB">lb</option><option value="OZ">oz</option>
+                </field>
                 <field name="field_ids" type="text" label="MOD_VM_SMARTFILTERS_FIELD_IDS" description="MOD_VM_SMARTFILTERS_FIELD_IDS_DESC" filter="string" />
                 <field name="category_options" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="MOD_VM_SMARTFILTERS_CATEGORY_OPTIONS" description="MOD_VM_SMARTFILTERS_CATEGORY_OPTIONS_DESC">
                     <option value="0">JNO</option><option value="1">JYES</option>

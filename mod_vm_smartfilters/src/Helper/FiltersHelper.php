@@ -10,6 +10,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Application\CMSApplicationInterface;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Database\DatabaseInterface;
 use Joomla\Registry\Registry;
 
@@ -63,22 +64,27 @@ final class FiltersHelper
         $groups = array_values(array_unique(array_filter($groups, static fn($id) => $id > 0)));
         $category = max(0, $app->getInput()->getInt('virtuemart_category_id', 0));
         $ids = self::parseIds((string) $params->get('field_ids', ''));
+        $propertyPluginEnabled = PluginHelper::isEnabled('system', 'vmpropertyfilters');
+        $propertiesEnabled = (int) $params->get('property_filters', 1) && $propertyPluginEnabled;
+        $stored = $propertyPluginEnabled ? (array) $app->getUserState('mod_vm_smartfilters.properties', []) : [];
+        $propertyState = PropertyFilters::normalize(($stored['category'] ?? -1) === $category ? ($stored['ranges'] ?? []) : []);
+        $propertyState['invalid'] = $propertyState['invalid'] || (($stored['category'] ?? -1) === $category && !empty($stored['invalid']));
 
         // Read VM's effective state after the component has handled a category change.
         $selected = self::normalizeSelection($app->getUserState('com_virtuemart.customfields', []));
         $query = $this->db->getQuery(true)
-            ->select('c.virtuemart_custom_id, c.custom_title, c.ordering, f.customfield_value')
+            ->select('c.virtuemart_custom_id, c.custom_title, c.ordering, c.field_type, f.customfield_value')
             ->from('#__virtuemart_customs AS c')
             ->join('INNER', '#__virtuemart_product_customfields AS f ON f.virtuemart_custom_id = c.virtuemart_custom_id')
             ->join('INNER', '#__virtuemart_products AS p ON p.virtuemart_product_id = f.virtuemart_product_id')
-            ->where('c.published = 1 AND c.searchable = 1 AND c.admin_only = 0 AND c.is_hidden = 0')
-            ->where('c.field_type = ' . $this->db->quote('S'))
+            ->where('c.published = 1 AND c.admin_only = 0 AND c.is_hidden = 0')
+            ->where("((c.field_type = 'S' AND c.searchable = 1)" . ($propertiesEnabled ? " OR c.field_type = 'P'" : '') . ')')
             ->where("(c.virtuemart_shoppergroup_id IS NULL OR c.virtuemart_shoppergroup_id = '' OR c.virtuemart_shoppergroup_id = '0')")
             ->where('p.published = 1')
             ->where("TRIM(f.customfield_value) <> '' AND TRIM(f.customfield_value) <> '0'")
             ->where('(NOT EXISTS (SELECT 1 FROM #__virtuemart_product_shoppergroups AS sg WHERE sg.virtuemart_product_id = p.virtuemart_product_id)'
                 . ($groups ? ' OR EXISTS (SELECT 1 FROM #__virtuemart_product_shoppergroups AS sg WHERE sg.virtuemart_product_id = p.virtuemart_product_id AND sg.virtuemart_shoppergroup_id IN (' . implode(',', $groups) . '))' : '') . ')')
-            ->group('c.virtuemart_custom_id, c.custom_title, c.ordering, f.customfield_value')
+            ->group('c.virtuemart_custom_id, c.custom_title, c.ordering, c.field_type, f.customfield_value')
             ->order('c.ordering ASC, c.virtuemart_custom_id ASC, f.customfield_value ASC');
         if ($ids) {
             $query->where('c.virtuemart_custom_id IN (' . implode(',', $ids) . ')');
@@ -91,9 +97,20 @@ final class FiltersHelper
         }
         $rows = $this->db->setQuery($query)->loadObjectList();
         $filters = [];
+        $propertyFilters = [];
         foreach ($rows as $row) {
             $id = (int) $row->virtuemart_custom_id;
             $value = trim((string) $row->customfield_value);
+            if (($row->field_type ?? 'S') === 'P') {
+                if (!$propertiesEnabled || !in_array($value, PropertyFilters::PROPERTIES, true)) { continue; }
+                $key = $id . '_' . $value;
+                $defaultUnit = $value === 'product_weight' ? 'KG' : 'CM';
+                $unit = (string) $params->get($value === 'product_weight' ? 'weight_unit' : 'dimension_unit', $defaultUnit);
+                if (!isset(PropertyFilters::units($value)[$unit])) { $unit = $defaultUnit; }
+                $range = $propertyState['ranges'][$key] ?? ['min' => '', 'max' => '', 'unit' => $unit];
+                $propertyFilters[$key] = ['id' => $id, 'key' => $key, 'title' => (string) $row->custom_title, 'property' => $value] + $range;
+                continue;
+            }
             // VM sanitises these characters before matching. Do not offer values
             // which its native search cannot reliably round-trip.
             if ($value === '' || $value === '0' || preg_match('/[<>&"\x00-\x1F]/u', $value) || str_contains($value, "'")) {
@@ -114,6 +131,9 @@ final class FiltersHelper
                 }
             }
             $filters = $ordered;
+            uksort($propertyFilters, static function ($a, $b) use ($propertyFilters, $ids) {
+                return array_search($propertyFilters[$a]['id'], $ids, true) <=> array_search($propertyFilters[$b]['id'], $ids, true);
+            });
         }
         foreach ($filters as $id => &$filter) {
             if (isset($selected[$id]) && in_array($selected[$id], $filter['values'], true)) {
@@ -130,6 +150,7 @@ final class FiltersHelper
             'searchAllCats' => 0, 'combineTags' => 1,
             // Non-empty array sentinel replaces session filters even when clearing.
             'customfields[0]' => '',
+            'vmfp[0]' => '',
         ];
         $manufacturer = max(0, $app->getInput()->getInt('virtuemart_manufacturer_id', 0));
         if ($manufacturer) {
@@ -147,14 +168,18 @@ final class FiltersHelper
         }
         $visibleCount = count(array_filter(array_column($filters, 'selected'), static fn($v) => $v !== ''));
         $activeCount = count($selected);
+        $visibleProperties = count(array_intersect_key($propertyState['ranges'], $propertyFilters));
+        $activeProperties = count($propertyState['ranges']);
 
         return [
             'filters' => $filters, 'hidden' => $hidden,
             // GET + a bare index.php avoids SEF query loss and preserves subfolders.
             'action' => Uri::root(true) . '/index.php',
             'clearUrl' => Uri::root(true) . '/index.php?' . http_build_query($hidden, '', '&', PHP_QUERY_RFC3986),
-            'activeCount' => $activeCount,
-            'otherCount' => $activeCount - $visibleCount,
+            'propertyFilters' => $propertyFilters,
+            'propertyInvalid' => $propertyState['invalid'],
+            'activeCount' => $activeCount + $activeProperties + (int) $propertyState['invalid'],
+            'otherCount' => $activeCount - $visibleCount + $activeProperties - $visibleProperties,
         ];
     }
 }

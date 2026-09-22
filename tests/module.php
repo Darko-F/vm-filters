@@ -15,6 +15,12 @@ namespace Joomla\CMS\Language {
         public static function sprintf($text, ...$args) { return $text . implode(',', $args); }
     }
 }
+namespace Joomla\CMS\Plugin {
+    class PluginHelper {
+        public static bool $enabled = true;
+        public static function isEnabled($group, $name) { return self::$enabled; }
+    }
+}
 namespace Joomla\Registry {
     class Registry {
         public function __construct(private array $values = []) {}
@@ -64,6 +70,7 @@ namespace {
         public function getInput() { return $this->input; }
         public function getUserState($key, $default = null) { return $this->state; }
     }
+    require __DIR__ . '/../mod_vm_smartfilters/src/Helper/PropertyFilters.php';
     require __DIR__ . '/../mod_vm_smartfilters/src/Helper/FiltersHelper.php';
     use VmFilters\Module\SmartFilters\Site\Helper\FiltersHelper;
     use Joomla\Registry\Registry;
@@ -132,5 +139,15 @@ namespace {
     $db->rows = [];
     $data = $helper->getData($app, $params);
     check(str_contains(render($data, $params, 23), 'customfields%5B0%5D='), 'Offer clearing even when no options remain');
+    $db->rows = [(object) ['virtuemart_custom_id' => 15, 'custom_title' => 'Width', 'field_type' => 'P', 'customfield_value' => 'product_width']];
+    $data = $helper->getData($app, new Registry());
+    check(isset($data['propertyFilters']['15_product_width']), 'Discover Property custom field');
+    $html = render($data, new Registry(), 24);
+    check(str_contains($html, 'name="vmfp[15_product_width][min]"'), 'Render minimum width bound');
+    check(str_contains($html, 'name="vmfp[15_product_width][max]"'), 'Render maximum width bound');
+    check(str_contains($html, 'value="CM"'), 'Default dimension filter unit');
+    check(!str_contains($html, 'name="customfields[15]"'), 'Never send a Property field through native String matching');
+    \Joomla\CMS\Plugin\PluginHelper::$enabled = false;
+    check($helper->getData($app, new Registry())['propertyFilters'] === [], 'Hide Property controls if companion plugin disabled');
     echo "$checks PHP contract checks passed\n";
 }

@@ -16,7 +16,7 @@ $instance = 'vmfilters-' . (int) $module->id;
 ?>
 <?php if ($error !== '') : ?>
     <p class="alert alert-secondary" role="status"><?= $escape($error) ?></p>
-<?php elseif (!$filters && !$activeCount) : ?>
+<?php elseif (!$filters && !$propertyFilters && !$activeCount) : ?>
     <?php if ((int) $params->get('show_empty', 0)) : ?>
         <p class="text-muted small"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_EMPTY')) ?></p>
     <?php endif; ?>
@@ -32,6 +32,9 @@ $instance = 'vmfilters-' . (int) $module->id;
         <p class="text-muted small mb-4" id="<?= $instance ?>-help"><?= $escape(Text::_((int) $params->get('autosubmit', 1) ? 'MOD_VM_SMARTFILTERS_HINT_AUTO' : 'MOD_VM_SMARTFILTERS_HINT')) ?></p>
         <?php if ($otherCount > 0) : ?>
             <p class="small text-muted"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_OTHER_ACTIVE')) ?></p>
+        <?php endif; ?>
+        <?php if ($propertyInvalid) : ?>
+            <p class="alert alert-warning" role="alert"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_INVALID_RANGE')) ?></p>
         <?php endif; ?>
         <form action="<?= $escape($action) ?>" method="get" class="vm-smartfilters-form" data-vm-filters data-auto-submit="<?= (int) $params->get('autosubmit', 1) ?>" aria-describedby="<?= $instance ?>-help">
             <?php foreach ($hidden as $name => $value) : ?>
@@ -49,7 +52,26 @@ $instance = 'vmfilters-' . (int) $module->id;
                         </select>
                     </div>
                 <?php endforeach; ?>
+                <?php foreach ($propertyFilters as $property) : ?>
+                    <div class="<?= $params->get('orientation', 'vertical') === 'horizontal' ? 'col-12 col-md-6 col-xl-4' : 'col-12' ?>">
+                        <fieldset class="vm-property-range">
+                            <legend class="form-label fw-semibold"><?= $escape(Text::_($property['title'])) ?> <span class="text-muted">(<?= $escape(strtolower($property['unit'])) ?>)</span></legend>
+                            <input type="hidden" name="vmfp[<?= $escape($property['key']) ?>][unit]" value="<?= $escape($property['unit']) ?>">
+                            <div class="vm-property-bounds">
+                                <?php foreach (['min' => 'MOD_VM_SMARTFILTERS_MIN', 'max' => 'MOD_VM_SMARTFILTERS_MAX'] as $bound => $label) : ?>
+                                    <div>
+                                        <label class="small" for="<?= $instance ?>-<?= $escape($property['key']) ?>-<?= $bound ?>"><?= $escape(Text::_($label)) ?></label>
+                                        <input type="text" class="form-control" inputmode="decimal" maxlength="22" pattern="[0-9]+([.,][0-9]{1,8})?" id="<?= $instance ?>-<?= $escape($property['key']) ?>-<?= $bound ?>" name="vmfp[<?= $escape($property['key']) ?>][<?= $bound ?>]" value="<?= $escape($property[$bound]) ?>" placeholder="<?= $escape(Text::_('MOD_VM_SMARTFILTERS_NO_LIMIT')) ?>">
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </fieldset>
+                    </div>
+                <?php endforeach; ?>
             </div>
+            <?php if ($propertyFilters) : ?>
+                <p class="small text-muted mt-3"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_RANGE_HINT')) ?></p>
+            <?php endif; ?>
             <div class="vm-smartfilters-actions d-flex gap-2 mt-4">
                 <button type="submit" class="btn btn-primary flex-grow-1"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_APPLY')) ?></button>
                 <a class="btn btn-outline-secondary" href="<?= $escape($clearUrl) ?>"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_CLEAR')) ?></a>
