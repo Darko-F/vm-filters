@@ -176,6 +176,10 @@ namespace {
     $horizontalHtml = render($helper->getData($app, $horizontal), $horizontal, 26);
     check(substr_count($horizontalHtml, '<details ') === 4, 'Horizontal measurements use native expandable controls');
     check(str_contains($horizontalHtml, 'vm-smartfilters-horizontal'), 'Horizontal styling is scoped');
+    check(!str_contains($horizontalHtml, 'vm-smartfilters-actions'), 'No main bottom action bar');
+    check(!str_contains($horizontalHtml, 'MOD_VM_SMARTFILTERS_RANGE_HINT'), 'Remove range instruction');
+    check(strpos($horizontalHtml, 'vm-smartfilters-toolbar') < strpos($horizontalHtml, '<form'), 'Clear all is above the filters');
+    check(substr_count($horizontalHtml, 'vm-filter-panel-apply') === 4, 'Each range keeps an apply action');
     check(str_contains($horizontalHtml, 'name="vmfp[23_product_weight][max]"'), 'Horizontal weight range preserves query contract');
     check(!str_contains(render($helper->getData($app, new Registry()), new Registry(), 27), '<details '), 'Vertical sidebar keeps visible fields');
     \Joomla\CMS\Plugin\PluginHelper::$enabled = false;

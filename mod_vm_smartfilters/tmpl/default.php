@@ -30,6 +30,9 @@ $horizontal = $params->get('orientation', 'vertical') === 'horizontal';
                 <span class="badge rounded-pill text-bg-primary" aria-label="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_ACTIVE', $activeCount)) ?>"><?= $activeCount ?></span>
             <?php endif; ?>
         </div>
+        <div class="vm-smartfilters-toolbar d-flex justify-content-start">
+            <a class="btn btn-outline-secondary" href="<?= $escape($clearUrl) ?>"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_CLEAR')) ?></a>
+        </div>
         <p class="vm-smartfilters-help text-muted small" id="<?= $instance ?>-help"><?= $escape(Text::_((int) $params->get('autosubmit', 1) ? 'MOD_VM_SMARTFILTERS_HINT_AUTO' : 'MOD_VM_SMARTFILTERS_HINT')) ?></p>
         <?php if ($otherCount > 0) : ?>
             <p class="small text-muted"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_OTHER_ACTIVE')) ?></p>
@@ -56,6 +59,11 @@ $horizontal = $params->get('orientation', 'vertical') === 'horizontal';
                                 <option value="<?= $escape($value) ?>"<?= $value === $filter['selected'] ? ' selected' : '' ?>><?= $escape(Text::_($value)) ?></option>
                             <?php endforeach; ?>
                         </select>
+                        <?php if (!(int) $params->get('autosubmit', 1)) : ?>
+                            <button type="submit" class="btn btn-primary vm-filter-panel-apply"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_APPLY')) ?></button>
+                        <?php else : ?>
+                            <noscript><button type="submit" class="btn btn-primary vm-filter-panel-apply"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_APPLY')) ?></button></noscript>
+                        <?php endif; ?>
                         <?php if ($horizontal) : ?>
                             </div>
                         </details>
@@ -82,21 +90,14 @@ $horizontal = $params->get('orientation', 'vertical') === 'horizontal';
                                 <?php endforeach; ?>
                             </div>
                         </fieldset>
+                        <button type="submit" class="btn btn-primary vm-filter-panel-apply"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_APPLY')) ?></button>
                         <?php if ($horizontal) : ?>
-                            <button type="submit" class="btn btn-primary vm-filter-panel-apply"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_APPLY')) ?></button>
                             </div>
                         </details>
                         <?php endif; ?>
                         <button type="button" class="btn btn-outline-secondary vm-filter-clear" data-clear-filter hidden aria-label="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_CLEAR_ONE', Text::_('MOD_VM_SMARTFILTERS_' . strtoupper($property['property'])))) ?>" title="<?= $escape(Text::sprintf('MOD_VM_SMARTFILTERS_CLEAR_ONE', Text::_('MOD_VM_SMARTFILTERS_' . strtoupper($property['property'])))) ?>"><span aria-hidden="true">×</span></button>
                     </div>
                 <?php endforeach; ?>
-            </div>
-            <?php if ($propertyFilters) : ?>
-                <p class="vm-smartfilters-range-hint small text-muted"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_RANGE_HINT')) ?></p>
-            <?php endif; ?>
-            <div class="vm-smartfilters-actions d-flex gap-2">
-                <button type="submit" class="btn btn-primary"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_APPLY')) ?></button>
-                <a class="btn btn-outline-secondary" href="<?= $escape($clearUrl) ?>"><?= $escape(Text::_('MOD_VM_SMARTFILTERS_CLEAR')) ?></a>
             </div>
             <p class="vm-smartfilters-status small text-muted mt-2 mb-0" role="status" aria-live="polite" hidden><?= $escape(Text::_('MOD_VM_SMARTFILTERS_LOADING')) ?></p>
         </form>
