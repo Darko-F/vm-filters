@@ -147,6 +147,17 @@ namespace {
     check(str_contains($html, 'name="vmfp[15_product_width][max]"'), 'Render maximum width bound');
     check(str_contains($html, 'value="CM"'), 'Default dimension filter unit');
     check(!str_contains($html, 'name="customfields[15]"'), 'Never send a Property field through native String matching');
+    foreach (['length', 'width', 'height', 'weight'] as $offset => $property) {
+        $db->rows[$offset] = (object) ['virtuemart_custom_id' => 20 + $offset, 'custom_title' => 'Properties', 'field_type' => 'P', 'customfield_value' => 'product_' . $property];
+    }
+    check(count($helper->getData($app, new Registry())['propertyFilters']) === 4, 'All four measurements enabled by default');
+    foreach (['length', 'width', 'height', 'weight'] as $offset => $property) {
+        $selection = new Registry(['show_product_' . $property => 0]);
+        $selected = $helper->getData($app, $selection);
+        check(count($selected['propertyFilters']) === 3 && !isset($selected['propertyFilters'][(20 + $offset) . '_product_' . $property]), 'Independently disable ' . $property);
+        check(!str_contains(render($selected, $selection, 25), 'name="vmfp[' . (20 + $offset) . '_product_' . $property . '][min]"'), 'Disabled measurement absent from form: ' . $property);
+    }
+    check($helper->getData($app, new Registry(['property_filters' => 0]))['propertyFilters'] === [], 'Master switch disables all measurements');
     \Joomla\CMS\Plugin\PluginHelper::$enabled = false;
     check($helper->getData($app, new Registry())['propertyFilters'] === [], 'Hide Property controls if companion plugin disabled');
     echo "$checks PHP contract checks passed\n";

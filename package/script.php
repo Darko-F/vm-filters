@@ -43,7 +43,7 @@ class pkg_vm_smartfiltersInstallerScript
                 ->where("type = 'plugin' AND folder = 'system' AND element = 'vmpropertyfilters'");
             $db->setQuery($query)->execute();
         }
-        // Package owns updates from 1.1.1. Detach only this module's old feed;
+        // Package owns updates from 1.1.0. Detach only this module's old feed;
         // keep the site record so an administrator's old download key is not destroyed.
         $query = $db->getQuery(true)->select('extension_id')->from('#__extensions')
             ->where("type = 'module' AND client_id = 0 AND element = 'mod_vm_smartfilters'");

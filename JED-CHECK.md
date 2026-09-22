@@ -1,6 +1,6 @@
 # JED preparation
 
-Version 1.1.1 was checked with the **unmodified official JED Checker 2.4.2 rule files**, tag commit `336d2c8`, using `scripts/jed-check.php` to supply filesystem, registry and language services outside Joomla. All 12 released rule classes are run; no rule or finding is suppressed. This is an isolated static scan, not a scan through JED Checker's Joomla administrator UI.
+Version 1.1.2 was checked with the **unmodified official JED Checker 2.4.2 rule files**, tag commit `336d2c8`, using `scripts/jed-check.php` to supply filesystem, registry and language services outside Joomla. All 12 released rule classes are run; no rule or finding is suppressed. This is an isolated static scan, not a scan through JED Checker's Joomla administrator UI.
 
 Results are recorded in `tests/jed-report.json`. The final scan runs on the extracted package and both extracted child ZIPs, not development scripts/tests. The package owns the update server, so its child module/plugin do not declare separate feeds.
 
@@ -11,7 +11,7 @@ Requires PHP 8.1+ with SimpleXML and ctype, Python 3, Node.js and Git.
 ```sh
 git clone --branch 2.4.2 --depth 1 https://github.com/joomla-extensions/jedchecker.git /tmp/jedchecker-2.4.2
 python3 scripts/build.py
-python3 scripts/extract-check.py dist/pkg_vm_smartfilters-1.1.1.zip /tmp/vm-smartfilters-check
+python3 scripts/extract-check.py dist/pkg_vm_smartfilters-1.1.2.zip /tmp/vm-smartfilters-check
 php scripts/jed-check.php /tmp/jedchecker-2.4.2 /tmp/vm-smartfilters-check
 php tests/module.php
 php tests/properties.php

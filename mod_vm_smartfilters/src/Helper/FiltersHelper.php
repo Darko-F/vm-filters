@@ -102,7 +102,8 @@ final class FiltersHelper
             $id = (int) $row->virtuemart_custom_id;
             $value = trim((string) $row->customfield_value);
             if (($row->field_type ?? 'S') === 'P') {
-                if (!$propertiesEnabled || !in_array($value, PropertyFilters::PROPERTIES, true)) { continue; }
+                if (!$propertiesEnabled || !in_array($value, PropertyFilters::PROPERTIES, true)
+                    || !(int) $params->get('show_' . $value, 1)) { continue; }
                 $key = $id . '_' . $value;
                 $defaultUnit = $value === 'product_weight' ? 'KG' : 'CM';
                 $unit = (string) $params->get($value === 'product_weight' ? 'weight_unit' : 'dimension_unit', $defaultUnit);
