@@ -10,6 +10,8 @@ use Joomla\CMS\Uri\Uri;
 
 final class PlgInstallerVmsmartfiltersupdatekey extends CMSPlugin
 {
+    protected $autoloadLanguage = true;
+
     public function onInstallerBeforePackageDownload(&$url, &$headers = []): bool
     {
         $event = is_object($url) && method_exists($url, 'getUrl') ? $url : null;

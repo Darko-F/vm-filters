@@ -17,6 +17,10 @@
         <file type="plugin" id="vmpropertyfilters" group="system">plg_system_vmpropertyfilters-1.1.8.zip</file>
         <file type="plugin" id="vmsmartfiltersupdatekey" group="installer">plg_installer_vmsmartfiltersupdatekey-1.1.8.zip</file>
     </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/vmsmartfilters.sys.ini</language>
+        <language tag="sl-SI">sl-SI/vmsmartfilters.sys.ini</language>
+    </languages>
     <updateservers>
         <server type="extension" priority="1" name="VM Smart Filters Package Updates">https://shop.topoweryou.com/files/updatesxml/vm-smartfilters-package.xml</server>
     </updateservers>

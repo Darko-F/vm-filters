@@ -2,11 +2,13 @@
 
 Bootstrap 5 styled product filters for VirtueMart 4.8.4 and later compatible releases, targeting Joomla 4.4 / 5 / 6.
 
-[Download version 1.1.8](dist/pkg_vm_smartfilters_v1.1.8.zip?raw=true) · [Version summary](VERSION_SUMMARY.md) · [Setup instructions](mod_vm_smartfilters/README.md) · [JED scan details](JED-CHECK.md)
+[Version summary](VERSION_SUMMARY.md) · [Setup instructions](mod_vm_smartfilters/README.md) · [JED scan details](JED-CHECK.md)
 
 Searchable public String custom fields appear as labelled selects. Property custom fields for length, width, height and weight appear as minimum/maximum inputs, with automatic conversion between product units. Customers can combine fields, refresh the normal VirtueMart listing automatically, or clear the selection. Includes responsive sidebar/horizontal layouts and English/Slovenian translations. The install package contains the module and an automatically enabled companion system plugin. It uses native page reloads, one selection per String field and AND across selections and numeric ranges.
 
 Install the ZIP through Joomla's extension installer and publish the module on VirtueMart category pages. Mark String fields Searchable and assign values to products. For dimensions/weight, fill in the product measurements and attach the corresponding public Property custom fields. Upgrade old 1.0.x installations by uploading the full package once. See the setup guide for field limitations and VM matching configuration.
+
+Installable release ZIPs are distributed through the shop as paid downloads. GitHub contains source code, documentation and tests. Local builds remain excluded from Git.
 
 ## Updates
 

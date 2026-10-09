@@ -1,9 +1,9 @@
 <?php
 /**
- * CLI adapter for the unmodified, released JED Checker 2.4.2 rules.
+ * CLI adapter for the unmodified, released JED Checker 2.4.4 rules.
  * @license GNU General Public License version 2 or later; see ../LICENSE
  * This is an isolated static scan, not a Joomla installation test.
- * Usage: php scripts/jed-check.php /path/to/jedchecker-2.4.2 /path/to/extracted-zip
+ * Usage: php scripts/jed-check.php /path/to/jedchecker-2.4.4 /path/to/extracted-zip
  */
 namespace Joomla\Registry {
     class Registry {
@@ -73,6 +73,11 @@ namespace {
             return str_contains($text, '%') ? sprintf($text, ...$args) : $text . ': ' . implode(', ', $args);
         }
     }
+    class_alias(JObject::class, 'Joomla\\CMS\\Object\\CMSObject');
+    class_alias(JFolder::class, 'Joomla\\CMS\\Filesystem\\Folder');
+    class_alias(JFilterInput::class, 'Joomla\\CMS\\Filter\\InputFilter');
+    class_alias(JText::class, 'Joomla\\CMS\\Language\\Text');
+    class_alias(JFactory::class, 'Joomla\\CMS\\Factory');
     $translation = JPATH_ADMINISTRATOR . '/language/en-GB/en-GB.com_jedchecker.ini';
     if (is_file($translation)) {
         $method = new \ReflectionMethod(ScanLanguage::class, 'loadLanguage');
@@ -98,7 +103,7 @@ namespace {
         }
     }
     $destination = __DIR__ . '/../tests/jed-report.json';
-    $encoded = json_encode(['checker' => '2.4.2', 'mode' => 'Unmodified upstream rules with CLI Joomla-service adapters', 'rules' => $results], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    $encoded = json_encode(['checker' => '2.4.4', 'mode' => 'Unmodified upstream rules with CLI Joomla-service adapters', 'rules' => $results], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     file_put_contents($destination, str_replace($target, '<package>', $encoded) . "\n");
     exit($failures ? 1 : 0);
 }

@@ -3,3 +3,7 @@ __pycache__/
 .DS_Store
 .idea/
 .vscode/
+
+# Commercial release artifacts stay in local/protected storage.
+/dist/*.zip
+/dist/*.zip.sha256

@@ -1,317 +1,337 @@
 {
-    "checker": "2.4.2",
-    "mode": "Unmodified upstream rules with CLI Joomla-service adapters",
-    "rules": {
-        "encoding": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
+  "checker": "2.4.4",
+  "mode": "Unmodified upstream rules with CLI Joomla-service adapters",
+  "rules": {
+    "encoding": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "errorreporting": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "framework": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "gpl": {
+      "count": {
+        "total": 10,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 10
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": [
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/mod_vm_smartfilters-1.1.8/script.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "errorreporting": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/mod_vm_smartfilters-1.1.8/services/provider.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "framework": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/mod_vm_smartfilters-1.1.8/src/Dispatcher/Dispatcher.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "gpl": {
-            "count": {
-                "total": 9,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 9
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": [
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.7/script.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.7/services/provider.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.7/src/Dispatcher/Dispatcher.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.7/src/Helper/FiltersHelper.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.7/src/Helper/PropertyFilters.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/mod_vm_smartfilters-1.1.7/tmpl/default.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/plg_system_vmpropertyfilters-1.1.7/services/provider.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/packages/plg_system_vmpropertyfilters-1.1.7/src/Extension/VmPropertyFilters.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                },
-                {
-                    "type": "passed",
-                    "subtype": "PH1",
-                    "location": "/script.php",
-                    "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
-                    "line": 5,
-                    "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
-                }
-            ]
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/mod_vm_smartfilters-1.1.8/src/Helper/FiltersHelper.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "jamss": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/mod_vm_smartfilters-1.1.8/src/Helper/PropertyFilters.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "jexec": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/mod_vm_smartfilters-1.1.8/tmpl/default.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "language": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/plg_installer_vmsmartfiltersupdatekey-1.1.8/vmsmartfiltersupdatekey.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 4,
+          "code": " @license GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "xmlfiles": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/plg_system_vmpropertyfilters-1.1.8/services/provider.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "xmlinfo": {
-            "count": {
-                "total": 3,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 3,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [
-                {
-                    "type": "info",
-                    "subtype": "",
-                    "location": "/pkg_vm_smartfilters.xml",
-                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.7<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
-                    "line": null,
-                    "code": null
-                },
-                {
-                    "type": "info",
-                    "subtype": "",
-                    "location": "/packages/mod_vm_smartfilters-1.1.7/mod_vm_smartfilters.xml",
-                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.7<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
-                    "line": null,
-                    "code": null
-                },
-                {
-                    "type": "info",
-                    "subtype": "",
-                    "location": "/packages/plg_system_vmpropertyfilters-1.1.7/vmpropertyfilters.xml",
-                    "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: System - VM Property Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.7<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-09",
-                    "line": null,
-                    "code": null
-                }
-            ],
-            "passed": []
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/packages/plg_system_vmpropertyfilters-1.1.8/src/Extension/VmPropertyFilters.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         },
-        "xmllicense": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
-        },
-        "xmlmanifest": {
-            "count": {
-                "total": 0,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 0
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": []
-        },
-        "xmlupdateserver": {
-            "count": {
-                "total": 1,
-                "error": 0,
-                "warning": 0,
-                "compatibility": 0,
-                "notice": 0,
-                "info": 0,
-                "passed": 1
-            },
-            "error": [],
-            "warning": [],
-            "compatibility": [],
-            "notice": [],
-            "info": [],
-            "passed": [
-                {
-                    "type": "passed",
-                    "subtype": "US1",
-                    "location": "/pkg_vm_smartfilters.xml",
-                    "text": "COM_JEDCHECKER_INFO_XML_UPDATE_SERVER_LINK: https://shop.topoweryou.com/files/updatesxml/vm-smartfilters-package.xml",
-                    "line": null,
-                    "code": null
-                }
-            ]
+        {
+          "type": "passed",
+          "subtype": "PH1",
+          "location": "/script.php",
+          "text": "COM_JEDCHECKER_PH1_LICENSE_FOUND",
+          "line": 5,
+          "code": " @license    GNU General Public License version 2 or later; see LICENSE.txt"
         }
+      ]
+    },
+    "jamss": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "jexec": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "language": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "xmlfiles": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "xmlinfo": {
+      "count": {
+        "total": 4,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 4,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [
+        {
+          "type": "info",
+          "subtype": "",
+          "location": "/pkg_vm_smartfilters.xml",
+          "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.8<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-10",
+          "line": null,
+          "code": null
+        },
+        {
+          "type": "info",
+          "subtype": "",
+          "location": "/packages/mod_vm_smartfilters-1.1.8/mod_vm_smartfilters.xml",
+          "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: VM Smart Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.8<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-10",
+          "line": null,
+          "code": null
+        },
+        {
+          "type": "info",
+          "subtype": "",
+          "location": "/packages/plg_installer_vmsmartfiltersupdatekey-1.1.8/vmsmartfiltersupdatekey.xml",
+          "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: Installer - VM Smart Filters Update Key<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.8<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-10",
+          "line": null,
+          "code": null
+        },
+        {
+          "type": "info",
+          "subtype": "",
+          "location": "/packages/plg_system_vmpropertyfilters-1.1.8/vmpropertyfilters.xml",
+          "text": "COM_JEDCHECKER_INFO_XML_NAME_XML: System - VM Property Filters<br />COM_JEDCHECKER_INFO_XML_VERSION_XML: 1.1.8<br />COM_JEDCHECKER_INFO_XML_CREATIONDATE_XML: 2026-10",
+          "line": null,
+          "code": null
+        }
+      ],
+      "passed": []
+    },
+    "xmllicense": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "xmlmanifest": {
+      "count": {
+        "total": 0,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 0
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": []
+    },
+    "xmlupdateserver": {
+      "count": {
+        "total": 1,
+        "error": 0,
+        "warning": 0,
+        "compatibility": 0,
+        "notice": 0,
+        "info": 0,
+        "passed": 1
+      },
+      "error": [],
+      "warning": [],
+      "compatibility": [],
+      "notice": [],
+      "info": [],
+      "passed": [
+        {
+          "type": "passed",
+          "subtype": "US1",
+          "location": "/pkg_vm_smartfilters.xml",
+          "text": "COM_JEDCHECKER_INFO_XML_UPDATE_SERVER_LINK: https://shop.topoweryou.com/files/updatesxml/vm-smartfilters-package.xml",
+          "line": null,
+          "code": null
+        }
+      ]
     }
+  },
+  "checker_commit": "fd18a27cdd8dbb22a6ef7dab997c49bfe6d00cea",
+  "package": "pkg_vm_smartfilters_v1.1.8.zip",
+  "package_sha256": "2220cd94ea25a59607bd3eb416ee680e46420195e6e4a7615e26be22a08b33a2",
+  "checked_on": "2026-10-09"
 }

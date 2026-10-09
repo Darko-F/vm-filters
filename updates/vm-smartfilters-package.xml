@@ -14,7 +14,7 @@
     <tags>
       <tag>stable</tag>
     </tags>
-    <sha256>b388be754306e9f5c180b09f56b9e8f2f6bc6d5fafd5ee801d736f60bda511ed</sha256>
+    <sha256>2220cd94ea25a59607bd3eb416ee680e46420195e6e4a7615e26be22a08b33a2</sha256>
     <maintainer>topoweryou.com</maintainer>
     <maintainerurl>https://topoweryou.com</maintainerurl>
     <targetplatform name="joomla" version="(4\.4\..*|5\..*|6\..*)" />
