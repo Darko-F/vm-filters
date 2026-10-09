@@ -75,3 +75,7 @@
 - Added configurable field IDs/order, category-scoped options, automatic submission, horizontal/sidebar layouts and English/Slovenian translations.
 - Added Bootstrap 5 styling, GPL notices, installer manifests, deterministic ZIP builds, SHA-256 checksums and the shop update-service integration.
 - Targeted VirtueMart 4.8.4 and later compatible releases on Joomla 4.4 / 5 / 6, with PHP 8.1 or later. Future platform releases require regression testing.
+
+## 1.1.8 — Commercial update integration (2026-10-09)
+
+Adds a bundled installer plugin for update key and current site domain transmission to the exact VM Smart Filters HTTPS download endpoint. Uses `pkg_vm_smartfilters_v1.1.8.zip`, matching VM Update Key Manager 1.2.2 release discovery. Adds download-key metadata to the local feed and documents the paid product assignment and protected storage path. Build/archive/checksum checks and JavaScript tests passed. PHP checks could not run in this environment because PHP is unavailable; live purchase and Joomla update checks remain required.

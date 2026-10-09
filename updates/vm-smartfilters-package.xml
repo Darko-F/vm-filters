@@ -6,18 +6,19 @@
     <element>pkg_vm_smartfilters</element>
     <type>package</type>
     <client>site</client>
-    <version>1.1.7</version>
+    <version>1.1.8</version>
     <infourl title="VM Smart Filters">https://github.com/Darko-F/vm-filters</infourl>
     <downloads>
-      <downloadurl type="full" format="zip">https://shop.topoweryou.com/index.php?option=com_vmupdatekeymanager&amp;task=download.get&amp;file=pkg_vm_smartfilters-1.1.7.zip&amp;channel=update</downloadurl>
+      <downloadurl type="full" format="zip">https://shop.topoweryou.com/index.php?option=com_vmupdatekeymanager&amp;task=download.get&amp;file=pkg_vm_smartfilters_v1.1.8.zip&amp;channel=update</downloadurl>
     </downloads>
     <tags>
       <tag>stable</tag>
     </tags>
-    <sha256>e4737872bb38fc1ff964176215ca86e891459e8cf7f2c31d4207ea85e789a81a</sha256>
+    <sha256>b388be754306e9f5c180b09f56b9e8f2f6bc6d5fafd5ee801d736f60bda511ed</sha256>
     <maintainer>topoweryou.com</maintainer>
     <maintainerurl>https://topoweryou.com</maintainerurl>
     <targetplatform name="joomla" version="(4\.4\..*|5\..*|6\..*)" />
+    <dlid prefix="key=" suffix="" />
     <php_minimum>8.1.0</php_minimum>
   </update>
 </updates>

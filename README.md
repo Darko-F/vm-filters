@@ -2,7 +2,7 @@
 
 Bootstrap 5 styled product filters for VirtueMart 4.8.4 and later compatible releases, targeting Joomla 4.4 / 5 / 6.
 
-[Download version 1.1.7](dist/pkg_vm_smartfilters-1.1.7.zip?raw=true) · [Version summary](VERSION_SUMMARY.md) · [Setup instructions](mod_vm_smartfilters/README.md) · [JED scan details](JED-CHECK.md)
+[Download version 1.1.8](dist/pkg_vm_smartfilters_v1.1.8.zip?raw=true) · [Version summary](VERSION_SUMMARY.md) · [Setup instructions](mod_vm_smartfilters/README.md) · [JED scan details](JED-CHECK.md)
 
 Searchable public String custom fields appear as labelled selects. Property custom fields for length, width, height and weight appear as minimum/maximum inputs, with automatic conversion between product units. Customers can combine fields, refresh the normal VirtueMart listing automatically, or clear the selection. Includes responsive sidebar/horizontal layouts and English/Slovenian translations. The install package contains the module and an automatically enabled companion system plugin. It uses native page reloads, one selection per String field and AND across selections and numeric ranges.
 
@@ -10,7 +10,7 @@ Install the ZIP through Joomla's extension installer and publish the module on V
 
 ## Updates
 
-Uses the same `shop.topoweryou.com` feed hosting and VM Update Key Manager download endpoint as BillHelper. Joomla's native Download Key field supplies the subscriber key. See [server deployment instructions](DEPLOYMENT.md). GitHub does not host the Joomla update feed.
+Uses the same `shop.topoweryou.com` feed hosting and VM Update Key Manager download endpoint as BillHelper. The bundled installer plugin sends the subscriber key and current site domain for limited licences. Enter the key in that plugin or Joomla's native Download Key field. See [server deployment instructions](DEPLOYMENT.md). GitHub does not host the Joomla update feed.
 
 ## Build and verify
 

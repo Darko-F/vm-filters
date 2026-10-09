@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="installer" method="upgrade">
+    <name>Installer - VM Smart Filters Update Key</name>
+    <version>1.1.8</version>
+    <creationDate>2026-10</creationDate>
+    <author>Darko Fatur</author>
+    <authorEmail>info@topoweryou.com</authorEmail>
+    <authorUrl>https://topoweryou.com</authorUrl>
+    <copyright>Copyright (C) 2026 topoweryou.com</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>Enter the update key from your purchase email. Sends your key and site hostname only to VM Smart Filters updates on shop.topoweryou.com.</description>
+    <files>
+        <filename plugin="vmsmartfiltersupdatekey">vmsmartfiltersupdatekey.php</filename>
+        <filename>LICENSE.txt</filename>
+    </files>
+    <config><fields name="params"><fieldset name="basic">
+        <field name="download_key" type="password" filter="string" label="Update key" description="Paste the key from your purchase email. You can also use the Download Key field in Joomla Update Sites." />
+    </fieldset></fields></config>
+</extension>

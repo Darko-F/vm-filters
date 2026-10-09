@@ -12,6 +12,7 @@ use Joomla\Database\DatabaseInterface;
 class pkg_vm_smartfiltersInstallerScript
 {
     private bool $pluginExists = false;
+    private bool $keyPluginExists = false;
 
     public function preflight($type, $parent): bool
     {
@@ -31,6 +32,9 @@ class pkg_vm_smartfiltersInstallerScript
         $query = $db->getQuery(true)->select('extension_id')->from('#__extensions')
             ->where("type = 'plugin' AND folder = 'system' AND element = 'vmpropertyfilters'");
         $this->pluginExists = (bool) $db->setQuery($query)->loadResult();
+        $query = $db->getQuery(true)->select('extension_id')->from('#__extensions')
+            ->where("type = 'plugin' AND folder = 'installer' AND element = 'vmsmartfiltersupdatekey'");
+        $this->keyPluginExists = (bool) $db->setQuery($query)->loadResult();
         return true;
     }
 
@@ -41,6 +45,11 @@ class pkg_vm_smartfiltersInstallerScript
         if (!$this->pluginExists) {
             $query = $db->getQuery(true)->update('#__extensions')->set('enabled = 1')
                 ->where("type = 'plugin' AND folder = 'system' AND element = 'vmpropertyfilters'");
+            $db->setQuery($query)->execute();
+        }
+        if (!$this->keyPluginExists) {
+            $query = $db->getQuery(true)->update('#__extensions')->set('enabled = 1')
+                ->where("type = 'plugin' AND folder = 'installer' AND element = 'vmsmartfiltersupdatekey'");
             $db->setQuery($query)->execute();
         }
         // Package owns updates from 1.1.0. Detach only this module's old feed;

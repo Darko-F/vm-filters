@@ -26,21 +26,21 @@ def source_files(path):
     return {str(p.relative_to(path)): p.read_bytes() for p in path.rglob('*') if p.is_file()}
 
 files = source_files(root / 'package')
-for name, xml in [('mod_vm_smartfilters', 'mod_vm_smartfilters.xml'), ('plg_system_vmpropertyfilters', 'vmpropertyfilters.xml')]:
+for name, xml in [('mod_vm_smartfilters', 'mod_vm_smartfilters.xml'), ('plg_system_vmpropertyfilters', 'vmpropertyfilters.xml'), ('plg_installer_vmsmartfiltersupdatekey', 'vmsmartfiltersupdatekey.xml')]:
     source = root / name
     child = ET.parse(source / xml).getroot()
     assert child.findtext('version') == version
     for node in child.findall('./files/*'):
         assert (source / node.text).exists(), node.text
     languages = child.find('languages')
-    for node in languages:
+    for node in languages if languages is not None else []:
         assert (source / languages.get('folder', '') / node.text).is_file(), node.text
     for node in child.findall('./media/folder'):
         assert (source / 'media' / node.text).is_dir(), node.text
     files[f'packages/{name}-{version}.zip'] = archive_bytes(source_files(source))
 for node in manifest.findall('./files/file'):
     assert 'packages/' + node.text in files, node.text
-target = root / 'dist' / f'pkg_vm_smartfilters-{version}.zip'
+target = root / 'dist' / f'pkg_vm_smartfilters_v{version}.zip'
 target.parent.mkdir(exist_ok=True)
 target.write_bytes(archive_bytes(files))
 with zipfile.ZipFile(target) as archive:
@@ -71,6 +71,7 @@ ET.SubElement(entry, 'sha256').text = checksum
 ET.SubElement(entry, 'maintainer').text = 'topoweryou.com'
 ET.SubElement(entry, 'maintainerurl').text = 'https://topoweryou.com'
 ET.SubElement(entry, 'targetplatform', {'name': 'joomla', 'version': r'(4\.4\..*|5\..*|6\..*)'})
+ET.SubElement(entry, 'dlid', {'prefix': 'key=', 'suffix': ''})
 ET.SubElement(entry, 'php_minimum').text = '8.1.0'
 ET.indent(updates, space='  ')
 feed = root / 'updates' / 'vm-smartfilters-package.xml'

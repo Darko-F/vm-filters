@@ -1,4 +1,4 @@
-# VM Smart Filters 1.1.7
+# VM Smart Filters 1.1.8
 
 Install this entire package ZIP through Joomla's extension installer. It contains the VM Smart Filters site module and System - VM Property Filters plugin. Requires VirtueMart 4.8.4+, Joomla 4.4+ and the PHP version required by your installed Joomla/VirtueMart release (extension minimum PHP 8.1).
 
@@ -9,3 +9,5 @@ The companion plugin is enabled on its first installation. Existing module setti
 Full instructions: modules/mod_vm_smartfilters/README.md after installation, or https://github.com/Darko-F/vm-filters
 
 Static checks pass; live Joomla/VirtueMart installation and update service deployment still need staging verification.
+
+Includes Installer - VM Smart Filters Update Key for site-limited update licences. Keep it enabled and enter your emailed key in its settings or the package Update Sites Download Key field. Installed filters continue working after update access expires.
